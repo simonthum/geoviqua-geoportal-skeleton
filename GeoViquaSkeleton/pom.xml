@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>GeoViqua</groupId>
 	<artifactId>GeoViqua-skeleton</artifactId>
-	<version>2.2</version>
-		<packaging>war</packaging>
+	<version>2.3</version>
+	<packaging>war</packaging>
 	<name>GeoViqua Skeleton Portlet</name>
+
 	<build>
-	    <extensions>
-			  <extension>
+		<extensions>
+			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
-				 <artifactId>wagon-ssh</artifactId>
-				 <version>1.0-alpha-6</version>
-			  </extension>
+				<artifactId>wagon-ssh</artifactId>
+				<version>1.0-alpha-6</version>
+			</extension>
 		</extensions>
-	    <plugins>
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -25,66 +27,66 @@
 				</configuration>
 			</plugin>
 			<plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>wagon-maven-plugin</artifactId>
-      <version>1.0-beta-4</version>
-      <executions>
-        <execution>
-          <id>ftp-repository</id>
-          <phase>package</phase>
-          <goals>
-            <goal>upload</goal>
-          </goals>
-          <configuration>
-		    
-			<serverId>ftp-repository</serverId>
-            <fromDir>${basedir}/target</fromDir>
-            <includes>*.war</includes>
-            <excludes>pom.xml</excludes>
-            <url>sftp://mydev.sapienzaconsulting.com</url>
-            <toDir>/geoportal/liferayng/deploy</toDir>
-          </configuration>
-          </execution>
-        </executions>
-        </plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0-beta-4</version>
+				<executions>
+					<execution>
+						<id>sapienza-ftp-repository</id>
+						<phase>package</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<serverId>sapienza-ftp-repository</serverId>
+							<fromDir>${basedir}/target</fromDir>
+							<includes>*.war</includes>
+							<excludes>pom.xml</excludes>
+							<url>sftp://mydev.sapienzaconsulting.com</url>
+							<toDir>geoportal/liferayng/deploy</toDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
-	   <dependency>
-            <groupId>com.sapienza</groupId>
-            <artifactId>geoportal-chore</artifactId>
-            <version>1.0.0</version>
-            <type>jar</type>
-        </dependency>
+		<dependency>
+			<groupId>com.sapienza</groupId>
+			<artifactId>geoportal-chore</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+		</dependency>
 		<dependency>
 			<groupId>javax.portlet</groupId>
-            <artifactId>portlet-api</artifactId>
-            <version>2.0</version>
-            <scope>provided</scope>
+			<artifactId>portlet-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		  <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>xml-apis</artifactId>
-                    <groupId>xml-apis</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
-	<!--
-	<distributionManagement>
+
+	<repositories>
 		<repository>
-		<id>ftp-repository</id>
-		<url>sftp://mydev.sapienzaconsulting.com</url>
+			<id>lib-repository</id>
+			<name>Local Repository</name>
+			<url>file:///${basedir}/lib-repository/</url>
 		</repository>
-	</distributionManagement>
-	-->
+	</repositories>
 </project>
