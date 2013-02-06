@@ -7,6 +7,13 @@
 		<packaging>war</packaging>
 	<name>GeoViqua Skeleton Portlet</name>
 	<build>
+	    <extensions>
+			  <extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				 <artifactId>wagon-ssh</artifactId>
+				 <version>1.0-alpha-6</version>
+			  </extension>
+		</extensions>
 	    <plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -17,7 +24,29 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
-			
+			<plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>wagon-maven-plugin</artifactId>
+      <version>1.0-beta-4</version>
+      <executions>
+        <execution>
+          <id>ftp-repository</id>
+          <phase>package</phase>
+          <goals>
+            <goal>upload</goal>
+          </goals>
+          <configuration>
+		    
+			<serverId>ftp-repository</serverId>
+            <fromDir>${basedir}/target</fromDir>
+            <includes>*.war</includes>
+            <excludes>pom.xml</excludes>
+            <url>sftp://mydev.sapienzaconsulting.com</url>
+            <toDir>/geoportal/liferayng/deploy</toDir>
+          </configuration>
+          </execution>
+        </executions>
+        </plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -50,4 +79,12 @@
             </exclusions>
         </dependency>
 	</dependencies>
+	<!--
+	<distributionManagement>
+		<repository>
+		<id>ftp-repository</id>
+		<url>sftp://mydev.sapienzaconsulting.com</url>
+		</repository>
+	</distributionManagement>
+	-->
 </project>
