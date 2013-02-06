@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 5.0.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_5_0_0.dtd">
+
+<liferay-portlet-app>
+	<portlet>
+		<portlet-name>GeoViquaSkeleton</portlet-name>
+		<instanceable>false</instanceable>
+	</portlet>	
+</liferay-portlet-app>

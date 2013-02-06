@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
+	<portlet>
+		<portlet-name>GeoViquaSkeleton</portlet-name>
+		<display-name>GeoViqua</display-name>
+		<portlet-class>com.sapienza.geoviqua.portlet.GeoViquaExamplePortlet</portlet-class>
+		<!-- 
+		<init-param>
+			<name>view-jsp</name>
+			<value>jsp/view.jsp</value>
+		</init-param>
+		 -->
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>GeoViqua</title>
+			<short-title>GeoViqua</short-title>
+			<keywords>GeoViqua</keywords>
+		</portlet-info>
+		<supported-public-render-parameter>uuid</supported-public-render-parameter>
+	</portlet>
+	
+	<public-render-parameter>
+	    <identifier>uuid</identifier>
+	    <qname xmlns:x="http://scgeoviqua.sapienzaconsulting.com">x:uuid</qname>
+	</public-render-parameter>	
+</portlet-app>
